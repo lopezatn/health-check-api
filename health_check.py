@@ -1,5 +1,5 @@
 from flask import Flask, request
-import sys, subprocess, re
+import subprocess, re
 
 app = Flask(__name__)
 
@@ -7,7 +7,7 @@ app = Flask(__name__)
 def health_check():
     container = request.args.get("container")
     if container == None:
-        return "Missing parameters, try again"
+        return "Missing parameters, try again", 400
     elif not re.match(r'^[a-zA-Z0-9_-]+$', container):
         return "Invalid container name", 400
 
