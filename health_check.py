@@ -14,9 +14,9 @@ def health_check():
     docker_result = subprocess.check_output(f"docker ps --filter name={container}", shell=True, text=True)
 
     if ("Up".casefold() in docker_result.casefold()):
-        return("The container is running.")
+        return("The container is running.\n")
     else:
-        return("The container is NOT running.")
+        return("The container is NOT running.\n")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
