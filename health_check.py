@@ -7,9 +7,9 @@ app = Flask(__name__)
 def health_check():
     container = request.args.get("container")
     if container == None:
-        return "Missing parameters, try again", 400
+        return "Missing parameters, try again\n", 400
     elif not re.match(r'^[a-zA-Z0-9_-]+$', container):
-        return "Invalid container name", 400
+        return "Invalid container name\n", 400
 
     docker_result = subprocess.check_output(f"docker ps --filter name={container}", shell=True, text=True)
 
